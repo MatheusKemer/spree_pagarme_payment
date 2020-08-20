@@ -2,9 +2,6 @@
 
 module Spree
   module OrdersControllerDecorator
-    protect_from_forgery
-    # skip_before_action :restriction_access
-
     def postback
       if valid_postback?
         PagarMe.api_key = ENV['PAGARME_API_KEY']
