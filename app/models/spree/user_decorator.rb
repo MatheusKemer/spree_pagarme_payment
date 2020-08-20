@@ -1,7 +1,10 @@
-# coding: utf-8
-Spree::User.class_eval do
+# frozen_string_literal: true
 
-	has_one :pagarme_recipient, dependent: :destroy
+module Spree
+  module UserDecorator
+    has_one :pagarme_recipient, dependent: :destroy
     has_many :bank_accounts, dependent: :destroy
-
+  end
 end
+
+Spree::User.prepend Spree::UserDecorator
