@@ -3,8 +3,10 @@
 module Spree
   module PaymentDecorator
     # attr_accessible :pagarme_payment_attributes
-    has_one :pagarme_payment
-    accepts_nested_attributes_for :pagarme_payment
+    def self.prepended(base)
+      base.has_one :pagarme_payment
+      base.accepts_nested_attributes_for :pagarme_payment
+    end
 
     def get_new_state
       if pagarme_payment

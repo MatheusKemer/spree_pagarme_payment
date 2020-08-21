@@ -2,8 +2,10 @@
 
 module Spree
   module UserDecorator
-    has_one :pagarme_recipient, dependent: :destroy
-    has_many :bank_accounts, dependent: :destroy
+    def self.prepended(base)
+      base.has_one :pagarme_recipient, dependent: :destroy
+      base.has_many :bank_accounts, dependent: :destroy
+    end
   end
 end
 

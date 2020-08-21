@@ -2,6 +2,10 @@
 
 module Spree
   module OrdersControllerDecorator
+    def self.prepended(base)
+      base.protect_from_forgery
+    end
+
     def postback
       if valid_postback?
         PagarMe.api_key = ENV['PAGARME_API_KEY']
